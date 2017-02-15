@@ -21,6 +21,8 @@ class Cat < ActiveRecord::Base
     message: "%{value} must be M or F"}
 
 
+  has_many :cat_rental_requests, :dependent => :destroy
+
   def age
     now = Time.now.utc.to_date
     now.year - self[:birth_date].year - ((now.month > self[:birth_date].month || (now.month == self[:birth_date].month && now.day >= self[:birth_date].day)) ? 0 : 1)

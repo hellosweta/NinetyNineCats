@@ -1,0 +1,25 @@
+
+<form action="<% cat_rental_requests_url %>"  method = "post">
+
+
+
+  <label for="name">Select Cat: </label>
+  <select id="name" name="name">
+
+    <option value="blank" disabled selected = "selected" >       </option>
+    <% Cat.all.each do |cat| %>
+     <option value= "cat[id]" <%=cat.name %> ><%=cat.name.capitalize%></option>
+    <% end %>
+  </select>
+<!-- Continue here -->
+  <br>
+
+  <label for="birth_date">Birth Date</label>
+    <input id="birth_date", name="birth_date" type="date" value="<%= cat.birth_date%>">
+
+
+
+  <br>
+
+   <input type="submit" value="<%= action == :edit ? 'Update Cat!' : 'Add New Cat!' %>">
+</form>
